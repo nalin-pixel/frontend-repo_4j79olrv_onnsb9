@@ -1,28 +1,34 @@
-import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navbar from './Navbar'
+import Hero from './components/Hero'
+import { About, Services, Reviews, Careers, Contact } from './components/Sections'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Page() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-[#001024]">
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Reviews />
+        <Careers />
+        <Contact />
+      </main>
+      <footer className="border-t border-white/10 py-10 text-center text-white/50">© {new Date().getFullYear()} NEWRAL — All rights reserved.</footer>
     </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Page />} />
+      <Route path="/about" element={<div className="pt-24 text-white">About</div>} />
+      <Route path="/services" element={<div className="pt-24 text-white">Services</div>} />
+      <Route path="/reviews" element={<div className="pt-24 text-white">Reviews</div>} />
+      <Route path="/careers" element={<div className="pt-24 text-white">Careers</div>} />
+      <Route path="/contact" element={<div className="pt-24 text-white">Contact</div>} />
+    </Routes>
+  )
+}

@@ -2,8 +2,9 @@ import { Routes, Route } from 'react-router-dom'
 import Navbar from './Navbar'
 import Hero from './components/Hero'
 import { About, Services, Reviews, Careers, Contact } from './components/Sections'
+import { AboutPage, ServicesPage, ReviewsPage, CareersPage, ContactPage } from './components/Pages'
 
-function Page() {
+function HomePage() {
   return (
     <div className="min-h-screen bg-[#001024]">
       <Navbar />
@@ -23,12 +24,12 @@ function Page() {
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Page />} />
-      <Route path="/about" element={<div className="pt-24 text-white">About</div>} />
-      <Route path="/services" element={<div className="pt-24 text-white">Services</div>} />
-      <Route path="/reviews" element={<div className="pt-24 text-white">Reviews</div>} />
-      <Route path="/careers" element={<div className="pt-24 text-white">Careers</div>} />
-      <Route path="/contact" element={<div className="pt-24 text-white">Contact</div>} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/about" element={<><Navbar /><AboutPage /></>} />
+      <Route path="/services" element={<><Navbar /><ServicesPage /></>} />
+      <Route path="/reviews" element={<><Navbar /><ReviewsPage /></>} />
+      <Route path="/careers" element={<><Navbar /><CareersPage /></>} />
+      <Route path="/contact" element={<><Navbar /><ContactPage /></>} />
     </Routes>
   )
 }
